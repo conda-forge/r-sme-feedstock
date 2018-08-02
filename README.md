@@ -14,14 +14,16 @@ Summary: A package for fitting smoothing-splines mixed-effects models to replica
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-sme-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-sme-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-sme-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-sme-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-sme-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-sme-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-sme-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-sme-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-sme-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-sme-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-sme-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-sme-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-sme/badges/version.svg)](https://anaconda.org/conda-forge/r-sme)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-sme/badges/downloads.svg)](https://anaconda.org/conda-forge/r-sme)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--sme-green.svg)](https://anaconda.org/conda-forge/r-sme) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-sme.svg)](https://anaconda.org/conda-forge/r-sme) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-sme.svg)](https://anaconda.org/conda-forge/r-sme) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-sme.svg)](https://anaconda.org/conda-forge/r-sme) |
 
 Installing r-sme
 ================
