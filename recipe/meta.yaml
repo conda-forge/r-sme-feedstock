@@ -29,14 +29,14 @@ requirements:
     - posix                # [win]
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
+    - llvm-openmp                # [osx] 
   host:
     - r-base
     - r-lattice
-
   run:
     - r-base
     - r-lattice
-
+    - llvm-openmp                # [osx] 
 test:
   commands:
     - $R -e "library('sme')"  # [not win]
