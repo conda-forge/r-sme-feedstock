@@ -1,5 +1,4 @@
-{% set version = '0.8' %}
-
+{% set version = '1.0.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,53 +7,68 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: sme_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/sme_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/sme/sme_{{ version }}.tar.gz
-
-  sha256: e643eda1c47dd7fae2ec7454c7c2658961cd8e80dc3b18bcc0e6a664fed059b6
+    - {{ cran_mirror }}/src/contrib/sme_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/sme/sme_{{ version }}.tar.gz
+  sha256: e62e0f7c1eeaa49dd7b2fc50a633e3e590a5743aeac7a1eff51a8bae83bf5f3f
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
-  skip: true  # [win32]
-
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - llvm-openmp                # [osx] 
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-lattice
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-lattice
-    - llvm-openmp                # [osx] 
+
 test:
   commands:
-    - $R -e "library('sme')"  # [not win]
+    - $R -e "library('sme')"           # [not win]
     - "\"%R%\" -e \"library('sme')\""  # [win]
 
 about:
-  home: https://cran.r-project.org/web/packages/sme/index.html
+  home: https://github.com/mberk/sme
   license: GPL (>= 3)
-  summary: A package for fitting smoothing-splines mixed-effects models to replicated functional
-    data sets.
+  summary: Fit smoothing-splines mixed-effects models to replicated functional data sets and
+    visualise the results.
   license_family: GPL3
   license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+
 extra:
-   recipe-maintainers:
+  recipe-maintainers:
+    - conda-forge/r
     - MathiasHaudgaard
     - FrodePedersen
     - ArneKr
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
+
+# Package: sme
+# Version: 1.0.2
+# Date: 2018-02-09
+# Title: Smoothing-Splines Mixed-Effects Models
+# Authors@R: c(person("Maurice", "Berk", email="maurice@mauriceberk.com",role=c("aut","cre")))
+# Depends: R (>= 2.15.2), splines, lattice, stats
+# Description: Fit smoothing-splines mixed-effects models to replicated functional data sets and visualise the results.
+# License: GPL (>= 3)
+# URL: https://github.com/mberk/sme
+# BugReports: https://github.com/mberk/sme/issues
+# NeedsCompilation: yes
+# Packaged: 2018-02-09 15:26:03 UTC; mberk
+# Author: Maurice Berk [aut, cre]
+# Maintainer: Maurice Berk <maurice@mauriceberk.com>
+# Repository: CRAN
+# Date/Publication: 2018-02-09 16:43:56 UTC
